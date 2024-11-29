@@ -11,7 +11,7 @@
 extern void asm_imgCvtGrayIntToDouble(int** int_array, double** double_array, int height, int width);
 
 
-    void c_imgCvtGrayIntToDouble(int** int_array, double** c_double_array, int height, int width) {
+void c_imgCvtGrayIntToDouble(int** int_array, double** c_double_array, int height, int width) {
     for (int i = 0; i < height; i++) {
         for (int j = 0; j < width; j++) {
             c_double_array[i][j] = (double)int_array[i][j] / 255.0;
@@ -148,32 +148,32 @@ int main(int argc, char* argv[]) {
         //allocate array
         int** tempint_array = (int**)malloc(tempheight * sizeof(int*));
 
-//        double** tempc_double_array = (double**)malloc(tempheight * sizeof(double*));
+        double** tempc_double_array = (double**)malloc(tempheight * sizeof(double*));
         double** tempasm_double_array = (double**)malloc(tempheight * sizeof(double*));
         for (int i = 0; i < tempheight; i++) {
             tempint_array[i] = (int**)malloc(tempwidth * sizeof(int*));
-//            tempc_double_array[i] = (double*)malloc(tempwidth * sizeof(double));
+            tempc_double_array[i] = (double*)malloc(tempwidth * sizeof(double));
             tempasm_double_array[i] = (double*)malloc(tempwidth * sizeof(double));
         }
 
         //random input
         rand_array(tempint_array, tempheight, tempwidth);
 
-        //clock_t c_total_time = 0;
-        //for (int t = 0; t < tests; t++) {
-        //    // Restore the original values
-        //    for (int i = 0; i < tempheight; i++) {
-        //        for (int j = 0; j < tempwidth; j++) {
-        //            tempc_double_array[i][j] = 0;
-        //        }
-        //    }
-        //    clock_t c_start = clock();
-        //    c_imgCvtGrayIntToDouble(tempint_array, tempc_double_array, tempheight, tempwidth);
-        //    clock_t c_end = clock();
-        //    c_total_time += (c_end - c_start);
-        //}
-        //c_elapsed_time = ((double)(c_total_time) / CLOCKS_PER_SEC / tests) *1000; //convert to ms
-        //Timing for Assembly ; run 30 times
+        //Timing for c and asm function test, run 30 times
+        clock_t c_total_time = 0;
+        for (int t = 0; t < tests; t++) {
+            // Restore the original values
+            for (int i = 0; i < tempheight; i++) {
+                for (int j = 0; j < tempwidth; j++) {
+                    tempc_double_array[i][j] = 0;
+                }
+            }
+            clock_t c_start = clock();
+            c_imgCvtGrayIntToDouble(tempint_array, tempc_double_array, tempheight, tempwidth);
+            clock_t c_end = clock();
+            c_total_time += (c_end - c_start);
+        }
+        c_elapsed_time = ((double)(c_total_time) / CLOCKS_PER_SEC / tests) *1000; //convert to ms
 
         clock_t asm_total_time = 0;
         for (int t = 0; t < tests; t++) {
@@ -192,15 +192,15 @@ int main(int argc, char* argv[]) {
 
         printf("-----------------\n");
         printf("Tested with Image Dimensions of\nHeight:%d Width:%d\n", tempheight, tempwidth);
-        //printf("C: %f ms\n", c_elapsed_time);
+        printf("C: %f ms\n", c_elapsed_time);
         printf("ASM: %f ms\n", asm_elapsed_time);
 
         for (int i = 0; i < height; i++) {
             free(tempint_array[i]);
-            //free(tempc_double_array[i]);
+            free(tempc_double_array[i]);
             free(tempasm_double_array[i]);
         }
-        //free(tempc_double_array);
+        free(tempc_double_array);
         free(tempasm_double_array);
         free(tempint_array);
     }
