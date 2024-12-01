@@ -1,4 +1,4 @@
-# Performance Comparison: C vs x86-64 Assembly for Image Grayscale Conversion
+# LBYARCH MCO2 README
 
 ### Group 8:
 ### TAN, Richmond Teri T.
@@ -8,7 +8,7 @@
 
 ## Project Overview
 
-This project compares the performance of a *C* implementation and an *x86-64* Assembly implementation for converting an image from grayscale integer values to grayscale double-precision floating-point values. The goal is to analyze the performance of both implementations and validate their outputs for correctness.
+To develop a C and x86-64 assembly program to efficiently convert grayscale images from integer-based representation to double-precision floating-point representation.
 
 ---
 
@@ -24,7 +24,7 @@ This project compares the performance of a *C* implementation and an *x86-64* As
   - Programming Language: C
   - Assembly Language: x86-64
   - Compiler: *gcc* for C and *nasm* for Assembly
-  - OS/Hardware: [Fill in your system details here]
+  - OS/Hardware:
     - Operating System: Windows 11
     - Processor: AMD Ryzen 5 3500X 6-Core Processor 3.70 GHz
     - Memory: 32GB DDR4 2400 MT/s
@@ -33,20 +33,19 @@ This project compares the performance of a *C* implementation and an *x86-64* As
 
 ### Performance Results
 
-| Image Dimensions (Height x Width) | C (ms) | x86-64 (ms) |
-|---|---|---|
-| 10 x 10 | 0.000000 | 0.000000 |
-| 100 x 100 | 0.033333 | 0.000000 |
-| 1000 x 1000 | 4.200000 | 1.233333 |
+| Image Dimensions (Height x Width) | x86-64 (ms) |
+|---|---|
+| 10 x 10 | 0.000000 |
+| 100 x 100 | 0.000000 |
+| 1000 x 1000 | 1.433333 |
 
 ### Analysis
-- The C implementation is straightforward and optimized for portability, making it easier to write and debug. However, its performance may lag behind an optimized x86 Assembly implementation.
-- The x86 Assembly implementation may exhibit significant performance improvements due to lower-level optimizations, particularly in the handling of loops and memory access patterns.
-- Based on the average execution times, *x86-64* outperforms *C* in processing the given image dimensions. *x86-64*'s efficiency can be attributed to its specialized instruction set and optimized algorithms for image processing tasks.
+- While hand-coded assembly can potentially outperform C in specific scenarios, modern compilers often generate highly optimized code. Assembly's platform-specific nature, low-level complexity, and development time often outweigh potential performance gains. C offers portability, readability, and faster development, making it a more practical choice for most software development tasks.
 
 ---
 
 ### Sample Output Screenshot
 
-![image](https://github.com/user-attachments/assets/a32dc653-5b9f-4d7d-bb8c-98b5a0f493df)
+![image](https://github.com/user-attachments/assets/6685ffaf-9250-4b1c-a764-096c5a0a4ded)
+
 
