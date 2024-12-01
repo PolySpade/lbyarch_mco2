@@ -1,4 +1,4 @@
-# Performance Comparison: C vs x86 Assembly for Image Grayscale Conversion
+# Performance Comparison: C vs x86-64 Assembly for Image Grayscale Conversion
 
 ### TAN, Richmond Teri T.
 ### XU, Donald G.
@@ -7,7 +7,7 @@
 
 ## Project Overview
 
-This project compares the performance of a C implementation and an x86 Assembly implementation for converting an image from grayscale integer values to grayscale double-precision floating-point values. The goal is to analyze the performance of both implementations and validate their outputs for correctness.
+This project compares the performance of a *C* implementation and an *x86-64* Assembly implementation for converting an image from grayscale integer values to grayscale double-precision floating-point values. The goal is to analyze the performance of both implementations and validate their outputs for correctness.
 
 ---
 
@@ -22,17 +22,21 @@ This project compares the performance of a C implementation and an x86 Assembly 
 - **Environment**: 
   - Programming Language: C
   - Assembly Language: x86-64
-  - Compiler: `gcc` for C and `nasm` for Assembly
+  - Compiler: *gcc* for C and *nasm* for Assembly
   - OS/Hardware: [Fill in your system details here]
+    - Operating System: Windows 11
+    - Processor: AMD Ryzen 5 3500X 6-Core Processor 3.70 GHz
+    - Memory: 32GB DDR4 2400 MT/s
+    - Graphics Card: NVIDIA GeForce RTX 2070
+    - Storage: 2TB HDD
 
 ### Performance Results
 
-| Image Dimensions | Average Execution Time (ms) | 
-|------------------|-----------------------------|
-|                  | **C**        | **x86 ASM** |
-| 10x10            | [Results]    | [Results]   |
-| 100x100          | [Results]    | [Results]   |
-| 1000x1000        | [Results]    | [Results]   |
+| Image Dimensions (Height x Width) | C (ms) | x86-64 (ms) |
+|---|---|---|
+| 10 x 10 | 0.000000 | 0.000000 |
+| 100 x 100 | 0.033333 | 0.000000 |
+| 1000 x 1000 | 4.200000 | 1.233333 |
 
 ### Analysis
 - The C implementation is straightforward and optimized for portability, making it easier to write and debug. However, its performance may lag behind an optimized x86 Assembly implementation.
@@ -41,10 +45,7 @@ This project compares the performance of a C implementation and an x86 Assembly 
 
 ---
 
-## 2. Program Output Validation
-
-The program validates the correctness of both implementations by comparing the output of each implementation against the expected result. The validation ensures that both implementations produce the same output when converting integers to floating-point grayscale values.
-
 ### Sample Output Screenshot
 
-**[Insert Screenshot Here]**
+![image](https://github.com/user-attachments/assets/a32dc653-5b9f-4d7d-bb8c-98b5a0f493df)
+
