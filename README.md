@@ -1,5 +1,6 @@
 # Performance Comparison: C vs x86-64 Assembly for Image Grayscale Conversion
 
+### Group 8:
 ### TAN, Richmond Teri T.
 ### XU, Donald G.
 

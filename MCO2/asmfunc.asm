@@ -3,14 +3,11 @@
 section .data
 divisor dq 255.0
 
-result dq 0.0
-
 section .text
 bits 64
 default rel ; to handle address relocation
 
 global asm_imgCvtGrayIntToDouble
-extern printf
 
 asm_imgCvtGrayIntToDouble:
 ;rcx - pointer to pointer int array
